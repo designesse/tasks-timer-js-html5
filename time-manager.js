@@ -11,7 +11,7 @@ window.onload = function(){
 
     var incrementTimer = function(timeButton, task, initialTime, startTime) {
         var elapsedTime = new Date();
-        var elapsedTimeValue = timeButton.previousSibling.firstChild;
+        var elapsedTimeValue = timeButton.nextSibling.firstChild;
         elapsedTime = Date.now() - startTime + initialTime;
 
         // Update the tasks variable.
@@ -95,17 +95,19 @@ window.onload = function(){
             deleteButton.innerHTML = 'x';
             deleteButton.onclick = function(){deleteTask(this);};
             li.appendChild(deleteButton);
-            var taskName = document.createTextNode(newTask);
+            var taskName = document.createElement("div");
+            taskName.className = "task-name";
+            taskName.innerHTML = newTask;
             li.appendChild(taskName);
-            var elapsedTime = document.createElement("span");
-            elapsedTime.className = "elapsed-time";
-            elapsedTime.appendChild(document.createTextNode('00:00:00'));
-            li.appendChild(elapsedTime);
             var timeButton = document.createElement("button");
             timeButton.className = "control-time";
             timeButton.innerHTML = 'START';
             timeButton.onclick = function(){controlTime(this, newTask);};
             li.appendChild(timeButton);
+            var elapsedTime = document.createElement("span");
+            elapsedTime.className = "elapsed-time";
+            elapsedTime.appendChild(document.createTextNode('00:00:00'));
+            li.appendChild(elapsedTime);
             // Append the li element to the list of tasks.
             ul.appendChild(li);
 
