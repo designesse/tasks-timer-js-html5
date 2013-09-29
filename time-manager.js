@@ -36,11 +36,24 @@ window.onload = function(){
         elapsedTimeValue.nodeValue = time;
     }
 
+    // Disable/Enable all other buttons when a task has started/stopped.
+    var disableButtons = function(disabledStatus) {
+        var buttons = document.getElementsByClassName("control-time");
+        if (buttons) {
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].innerHTML == 'START') {
+                    buttons[i].disabled = disabledStatus;
+                }
+            }
+        }
+    }
+
     // Event when start button is clicked.
     var controlTime = function(timeButton, task) {
         var initialTime = tasks[task];
         var elapsedTime;
         if (timeButton.innerHTML == 'START') {
+            // Check if no other task has been started and start the clock.
             var timeButtons = document.getElementsByClassName("control-time");
             var startTimer = true;
             for (var i=0; timeButtons[i]; i++) {
@@ -51,18 +64,18 @@ window.onload = function(){
             }
             if (startTimer == true) {
                 timeButton.innerHTML = 'STOP';
+                disableButtons(true);
+
                 // Initiate the start time.
                 var startTime = new Date();
                 timerIntervalId = setInterval(function(){incrementTimer(timeButton, task, initialTime, startTime);}, 1000);
 
             }
-            else {
-                alert(" You can't start a new task as another one is ongoing ");
-            }
         }
         else {
             // Stop the clock and reset it.
             clearInterval(timerIntervalId);
+            disableButtons(false);
             timeButton.innerHTML = 'START';
         }
     }
