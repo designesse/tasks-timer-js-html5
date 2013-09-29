@@ -54,7 +54,7 @@ body { color: #aaa; }
 
 h1 { border-bottom: 2px solid #ccc; padding: 10px; padding-left: 15px; margin: 0 auto; text-transform: uppercase; }
 
-ul#tasks { border: 1px solid #eee; background-color: #ffecd0; max-width: 400px; margin: 20px; }
+ul#tasks { border: 1px solid #eee; background-color: #ffecd0; width: 400px; margin: 20px; }
 
 ul#tasks li { border-bottom: 2px solid #ddd; background-color: #fff3e1; padding: 7px 15px; }
 
