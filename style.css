@@ -65,4 +65,5 @@ ul#tasks li .elapsed-time { border: 2px solid #aaa; background-color: #fff; padd
 ul#tasks li .control-time { float: right; width: 50px; }
 ul#tasks li .elapsed-time { float: right; }
 
+#error-message { margin-left: 70px; margin-bottom: 10px; color: #cd5c5c; }
 #new-task { margin-left: 70px; width: 180px; }
